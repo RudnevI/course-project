@@ -1,0 +1,23 @@
+body {
+    background-color: #00477d;
+}
+
+.home_main {
+    margin-top: 5rem;
+}
+
+.home_main > * {
+    color: white;
+}
+
+@media (max-width: 800px) {
+
+    .home_main {
+        margin-top: 4rem;
+    }
+
+    .img-fluid {
+        margin-bottom: 2rem;
+    }
+
+}
