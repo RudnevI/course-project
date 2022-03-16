@@ -27,6 +27,9 @@ $publicStaticRoutesRegistry = ['our-activity', 'about', 'communication',
 'news-page-5',
 'news-page-6',
 'news-page-7',
+'nkn-index',
+'nkn-news',
+'in-development'
 
 
 ];
@@ -45,4 +48,7 @@ Route::get('/', function() {
     return view('index');
 });
 
+Route::get('/our-status', function() {
+    return view('our-status');
+});
 

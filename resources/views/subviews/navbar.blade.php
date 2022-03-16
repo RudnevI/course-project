@@ -103,7 +103,7 @@
           <li>
             <a href="#" class="dropdown-item">Национальные комитеты ЮНЕСКО</a>
             <ul class="dropdown-menu dropdown-submenu">
-              <a href="#" class="dropdown-item">Национальный Комитет НКН</a>
+              <a href="/nkn-index" class="dropdown-item">Национальный Комитет НКН</a>
               <a href="#" class="dropdown-item">Национальный Комитет МАБ</a>
               <a href="#" class="dropdown-item"
                 >Национальный Комитет "Память мира"</a

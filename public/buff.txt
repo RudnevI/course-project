@@ -1,0 +1,91 @@
+    <div id="news-header-slider">
+        <div
+          id="carouselExampleIndicators"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators news-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="0"
+              class="active news-indicator"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="1"
+              class="news-indicator"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="2"
+              class="news-indicator"
+              aria-label="Slide 3"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="3"
+              class="news-indicator"
+              aria-label="Slide 4"
+            ></button>
+          </div>
+          <div class="carousel-inner" id="news-carousel-inner">
+            <div class="carousel-item active">
+              <div class="carousel-item-inner">
+                <img src="assets/news/news1.png" class="news-slider-image" />
+                <div class="slider-text">
+                  Четыре номинации из Центральной Азии включены в
+                  Репрезентативный список нематериального культурного наследия
+                  человечества в ходе шестнадцатой сессии Межправительственного
+                  комитета по охране нематериального культурного наследия,
+                  которая проходила полностью в онлайн режиме с 13 по 18 декабря
+                  2021 года.
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="carousel-item-inner">
+                <img src="assets/news/news2.png" class="news-slider-image" />
+                <div class="slider-text">
+                  ЮНЕСКО подготовлен и представлен новый стандарт переподготовки
+                  и повышения квалификации сотрудников, занимающихся культурным
+                  наследием.
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="carousel-item-inner">
+                <img src="assets/news/news3.png" class="news-slider-image" />
+                <div class="slider-text">
+                  41-я сессия Генеральной конференции ЮНЕСКО завершилась
+                  принятием ключевых соглашений, свидетельствующих о
+                  возобновлении многостороннего сотрудничества в области
+                  восстановления образования, открытой науки и этических
+                  аспектов искусственного интеллекта. Организация отметила свою
+                  75-ю годовщину в ходе этой сессии.
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="carousel-item-inner">
+                <img src="assets/news/news4.png" class="news-slider-image" />
+                <div class="slider-text">
+                  В Сеуле состоялась официальная инаугурации Сети живого
+                  наследия Шелкового пути, нового проекта Центра ЮНЕСКО-ICHCAP и
+                  Международного института центральноазиатских исследований
+                  МИЦАИ-IICAS.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
