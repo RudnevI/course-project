@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
     <div class="container-fluid">
-      <a href="/nkn-index"><img id="navbar-logo" src="assets/logo.png" /></a>
+      <a href="/nkn-index"><img id="navbar-logo" src="{{ asset('assets/logo.png') }}" /></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -175,7 +175,7 @@
           </li>
         </ul>
         <form id="navbarSearch" class="form-inline">
-          <img src="assets/search-icon.png" alt="Поиск" id="searchIcon" />
+          <img src="{{ asset('assets/search-icon.png') }}" alt="Поиск" id="searchIcon" />
         </form>
       </div>
     </div>

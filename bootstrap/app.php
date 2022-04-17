@@ -11,6 +11,8 @@
 |
 */
 
+use App\Models\User;
+
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
@@ -51,5 +53,9 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
+
+// if(User::all()->count() === 0) {
+//     $admin = User::create(['name' => 'admin', 'email' => 'admin@admin.com', 'password' => '123456']);
+// }
 
 return $app;

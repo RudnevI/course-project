@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PathToFileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +32,8 @@ $publicStaticRoutesRegistry = ['our-activity', 'about', 'communication',
 'news-page-7',
 'nkn-index',
 'nkn-news',
-'in-development'
+'in-development',
+'map'
 
 
 ];
@@ -51,4 +55,27 @@ Route::get('/', function() {
 Route::get('/our-status', function() {
     return view('our-status');
 });
+
+/* admin board methods */
+$adminBoardRoutes = ['/articles' => ArticleController::class, '/path-to-file' => PathToFileController::class, '/users' => UserController::class];
+
+
+foreach(array_keys($adminBoardRoutes) as $route) {
+
+    Route::get($route, [$adminBoardRoutes[$route], 'getAll']);
+    Route::post($route, [$adminBoardRoutes[$route], 'create']);
+    Route::put($route.'/{id}', [$adminBoardRoutes[$route], 'update']);
+    Route::get($route.'/{id}', [$adminBoardRoutes[$route], 'getOneById']);
+    Route::delete($route.'/{id}', [$adminBoardRoutes[$route], 'delete']);
+
+}
+
+Route::get('/admin-articles', ['uses' => ArticleController::class.'@getAllArticlesAdmin']);
+Route::get('/admin-create-article', ['uses' => ArticleController::class.'@getArticleCreationForm']);
+Route::get('/admin-edit-article/{id}', ['uses' => ArticleController::class.'@getArticleEditForm']);
+
+Route::get('/admin-users', ['uses' => UserController::class.'@getAllUsersAdmin']);
+Route::get('/admin-create-user', ['uses' => UserController::class.'@getUserCreationForm']);
+
+
 
