@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\CulturalHeritageSite;
+use App\Models\MapCoordinate;
 use Illuminate\Http\Request;
 
 class ArticleController extends CrudController
@@ -26,5 +28,10 @@ class ArticleController extends CrudController
         parent::create($request);
         return redirect('/admin-articles');
 
+    }
+
+    public function getAdminMapView() {
+        return view('admin-map',['sites' => CulturalHeritageSite::with('mapCoordinates')->get()]);
+        // return view('admin-map',['sites' => MapCoordinate::all()]);
     }
 }

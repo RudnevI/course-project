@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\CulturalHeritageSite;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class MapCoordinateFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'longitude' => rand(48, 86),
+            'latitute' => rand(40, 55),
+            'site_id' => CulturalHeritageSite::factory()->create()->id
+
         ];
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->double("latitute")->nullable(false);
             $table->double("longitude")->nullable(false);
-            $table->foreignId('cultural_heritage_site_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('site_id')->references('id')->on('cultural_heritage_sites')->onDelete('cascade');
             $table->timestamps();
         });
     }

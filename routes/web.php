@@ -76,6 +76,7 @@ Route::get('/admin-edit-article/{id}', ['uses' => ArticleController::class.'@get
 
 Route::get('/admin-users', ['uses' => UserController::class.'@getAllUsersAdmin']);
 Route::get('/admin-create-user', ['uses' => UserController::class.'@getUserCreationForm']);
+Route::get('/admin-map', ['uses' => ArticleController::class.'@getAdminMapView']);
 
 
 

@@ -21,6 +21,10 @@ class CrudController extends Controller
         return $this->getModel()::orderBy('id', 'desc')->paginate(20);
     }
 
+    public function getAllUnpaginated() {
+        return $this->getModel()::all();
+    }
+
     public function create(Request $request) {
         try {
 

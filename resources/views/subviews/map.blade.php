@@ -1,3 +1,10 @@
+<style>
+    #map {
+        height: 100vh;
+        width: 100%
+    }
+</style>
+
 <div id="map">
 
 </div>
@@ -23,5 +30,14 @@
          ]
      })
  });
+ let sites = {{Js::from($sites)}};
+ sites.forEach(site => {
+     if(site.map_coordinates.length !== 0) {
+         site.map_coordinates.forEach(coordinate => layer.source.features[0].geometry.add())
+     }
+ });
  map.addLayer(layer);
+
+
+
   </script>

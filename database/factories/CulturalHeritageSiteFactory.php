@@ -16,8 +16,12 @@ class CulturalHeritageSiteFactory extends Factory
      */
     public function definition()
     {
-        return [
-            //
-        ];
+
+        $textFields = ['name', 'description'];
+        $result = [];
+        foreach($textFields as $textField) {
+            $result += [$textField => $this->faker->text(20)];
+        }
+        return $result;
     }
 }
