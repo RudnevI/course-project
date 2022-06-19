@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\PathToFile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Throwable;
@@ -13,78 +14,79 @@ class CrudController extends Controller
 {
     protected $model;
 
-    public function getModel() {
+    public function getModel()
+    {
         return ($this->model);
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         return $this->getModel()::orderBy('id', 'desc')->paginate(20);
     }
 
-    public function getAllUnpaginated() {
+    public function getAllUnpaginated()
+    {
         return $this->getModel()::all();
     }
 
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         try {
+            if (array_key_exists('password', $request->all())) {
+                $request->request->set('password', bcrypt($request->all()['password']));
+            }
 
             $entity = $this->getModel()::create($request->all());
-            if($request->file('article-image') !== null) {
+            if ($request->file('article-image') !== null) {
 
                 $fileUuid = Str::orderedUuid();
                 $pathToFile = new PathToFile();
-                $request->file('article-image')->storeAs('./', $fileUuid.'.'.$request->file('article-image')->guessExtension());
+                $request->file('article-image')->storeAs('./', $fileUuid . '.' . $request->file('article-image')->guessExtension(), options: ['disk' => 'public']);
 
-                $pathToFile->path = $fileUuid.'.'.$request->file('article-image')->guessExtension();
+                $pathToFile->path = $fileUuid . '.' . $request->file('article-image')->guessExtension();
                 $pathToFile->article_id = $entity->id;
                 $pathToFile->save();
-
             }
-        }
-        catch(Throwable $throwable) {
+        } catch (Throwable $throwable) {
             dd($throwable->getMessage());
         }
     }
 
-    public function getOneById($id) {
+    public function getOneById($id)
+    {
         try {
-            return $this->getModel()::findOrFail($id);
-        }
-        catch(Throwable $throwable) {
-            dd($throwable->getMessage());
-
+            return $this->getModel()::where('id', '=', $id)->first();
+        } catch (Throwable $throwable) {
         }
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         try {
             $entity = $this->getModel()::findOrFail($id);
             $entity->fill($request->all());
             $entity->save();
-        }
-        catch(Throwable $throwable) {
+        } catch (Throwable $throwable) {
             dd($throwable->getMessage());
         }
         return redirect()->back();
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         try {
             $entity = $this->getModel()::findOrFail($id);
-            if($this->getModel() === Article::class) {
+            if ($this->getModel() === Article::class) {
                 $associatedImagePaths = PathToFIle::where('article_id', $entity->id)->get()->toArray();
 
-                foreach($associatedImagePaths as $path) {
+                foreach ($associatedImagePaths as $path) {
 
                     Storage::delete($path['path']);
                 }
             }
             $entity->delete();
-
-
-        } catch(Throwable $throwable) {
+        } catch (Throwable $throwable) {
             dd($throwable->getMessage());
-
         }
         return redirect()->back();
     }

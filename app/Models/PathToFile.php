@@ -12,4 +12,6 @@ class PathToFile extends Model
     protected $fillable = ['id', 'path'];
 
     protected $hidden = [];
+
+
 }

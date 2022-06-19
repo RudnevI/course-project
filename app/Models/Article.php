@@ -12,4 +12,8 @@ class Article extends Model
     protected $fillable = ['id','title', 'content', 'author_full_name', 'url'];
 
     protected $hidden = [];
+
+    public function pathsToFiles() {
+        return $this->hasMany(Article::class);
+    }
 }
