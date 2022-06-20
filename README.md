@@ -33,6 +33,6 @@ email: admin@admin.com
     ![Alt text](./docs/images/user-create.png?raw=true "Articles")
 
 При создании статьи ей назначается, уникальный url; указав url в качестве параметра по пути `/article/{url}`, можно получить заполненный вариант статьи. Пример:
-![Alt text](./docs/images/article-create-url-example.png?raw=true "Articles")
-![Alt text](./docs/images/article-create-url-example-list.png?raw=true "Articles")
-![Alt text](./docs/images/article-create-example-article-page.png?raw=true "Articles")
+![Alt text](./docs/images/article-create-url-example.PNG?raw=true "Articles")
+![Alt text](./docs/images/article-create-url-example-list.PNG?raw=true "Articles")
+![Alt text](./docs/images/article-create-example-article-page.PNG?raw=true "Articles")
