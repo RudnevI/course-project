@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MapCoordinateController;
+use App\Http\Controllers\MapLocationController;
 use App\Http\Controllers\PathToFileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Config;
@@ -40,7 +42,7 @@ Route::get('/', function () {
 
 
 /* admin board methods */
-$adminBoardRoutes = ['articles' => ArticleController::class, 'path-to-file' => PathToFileController::class, 'users' => UserController::class];
+$adminBoardRoutes = ['articles' => ArticleController::class, 'path-to-file' => PathToFileController::class, 'users' => UserController::class, 'coordinates' => MapCoordinateController::class];
 
 
 foreach (array_keys($adminBoardRoutes) as $route) {

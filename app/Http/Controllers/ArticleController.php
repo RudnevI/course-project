@@ -37,7 +37,7 @@ class ArticleController extends CrudController
 
     public function getAdminMapView()
     {
-        return view('admin-map', ['sites' => CulturalHeritageSite::with('mapCoordinates')->get()]);
+        return view('admin-map', ['coordinates' => MapCoordinate::all()]);
         // return view('admin-map',['sites' => MapCoordinate::all()]);
     }
 

@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('map_coordinates', function (Blueprint $table) {
             $table->id();
-            $table->double("latitute")->nullable(false);
+            $table->double("latitude")->nullable(false);
             $table->double("longitude")->nullable(false);
-            $table->foreignId('site_id')->references('id')->on('cultural_heritage_sites')->onDelete('cascade');
+            $table->text('description');
+            $table->foreignId('site_id')->nullable()->references('id')->on('cultural_heritage_sites')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class MapCoordinate extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'longitude', 'latitude', 'description'
+    ];
 }
