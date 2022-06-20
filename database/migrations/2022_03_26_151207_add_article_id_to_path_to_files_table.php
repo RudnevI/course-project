@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('path_to_files', function (Blueprint $table) {
-            $table->foreignId('article_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('article_id')->references('id')->on('articles')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

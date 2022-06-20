@@ -29,24 +29,33 @@ class CrudController extends Controller
         return $this->getModel()::all();
     }
 
-    public function create(Request $request)
+    public function createInstanceFromFactory()
+    {
+        return ($this->getModel())::factory()->create();
+    }
+
+    public function createParent(Request $request)
     {
         try {
+
             if (array_key_exists('password', $request->all())) {
                 $request->request->set('password', bcrypt($request->all()['password']));
             }
 
             $entity = $this->getModel()::create($request->all());
-            if ($request->file('article-image') !== null) {
+            if ($request->file('article-images') !== null) {
+                $files = $request->file('article-images');
+                foreach ($files as $file) {
+                    $fileUuid = Str::orderedUuid();
+                    $pathToFile = new PathToFile();
+                    $file->storeAs('./', $fileUuid . '.' . $file->guessExtension(), options: ['disk' => 'public']);
 
-                $fileUuid = Str::orderedUuid();
-                $pathToFile = new PathToFile();
-                $request->file('article-image')->storeAs('./', $fileUuid . '.' . $request->file('article-image')->guessExtension(), options: ['disk' => 'public']);
-
-                $pathToFile->path = $fileUuid . '.' . $request->file('article-image')->guessExtension();
-                $pathToFile->article_id = $entity->id;
-                $pathToFile->save();
+                    $pathToFile->path = $fileUuid . '.' . $file->guessExtension();
+                    $pathToFile->article_id = $entity->id;
+                    $pathToFile->save();
+                }
             }
+            return $entity->id;
         } catch (Throwable $throwable) {
             dd($throwable->getMessage());
         }
@@ -62,6 +71,7 @@ class CrudController extends Controller
 
     public function update(Request $request, $id)
     {
+
         try {
             $entity = $this->getModel()::findOrFail($id);
             $entity->fill($request->all());

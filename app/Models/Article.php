@@ -9,11 +9,12 @@ class Article extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','title', 'content', 'author_full_name', 'url'];
+    protected $fillable = ['id', 'title', 'content', 'author_full_name', 'url'];
 
     protected $hidden = [];
 
-    public function pathsToFiles() {
+    public function pathsToFiles()
+    {
         return $this->hasMany(Article::class);
     }
 }

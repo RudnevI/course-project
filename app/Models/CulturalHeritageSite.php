@@ -16,7 +16,8 @@ class CulturalHeritageSite extends Model
     ];
 
 
-    public function mapCoordinates() {
+    public function mapCoordinates()
+    {
         return $this->hasMany(MapCoordinate::class, 'site_id');
     }
 }

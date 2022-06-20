@@ -9,9 +9,7 @@ class PathToFile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'path'];
+    protected $fillable = ['id', 'path', 'article_id'];
 
     protected $hidden = [];
-
-
 }

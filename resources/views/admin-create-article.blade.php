@@ -69,8 +69,9 @@
                             class="form-control"
                             type="file"
                             id="article-image"
-                            name="article-image"
+                            name="article-images[]"
                             required
+                            multiple
                         />
                     </div>
                     <div>

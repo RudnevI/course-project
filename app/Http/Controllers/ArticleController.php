@@ -7,7 +7,6 @@ use App\Models\CulturalHeritageSite;
 use App\Models\MapCoordinate;
 use App\Models\PathToFile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ArticleController extends CrudController
@@ -32,7 +31,7 @@ class ArticleController extends CrudController
 
     public function create(Request $request)
     {
-        parent::create($request);
+        parent::createParent($request);
         return redirect('/admin-articles');
     }
 
@@ -45,7 +44,7 @@ class ArticleController extends CrudController
     public function getArticle($url)
     {
         $article = Article::where('url', '=', $url)->first();
-        $pathsToFiles = PathToFile::where('id', '=', $article->id)->get();
+        $pathsToFiles = PathToFile::where('article_id', '=', $article->id)->get();
         if ($article === null) throw new NotFoundHttpException();
 
         return view('article', ['article' => $article, 'pathsToFiles' => $pathsToFiles]);

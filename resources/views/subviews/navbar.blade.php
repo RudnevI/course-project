@@ -1,10 +1,10 @@
 <div class="navbar-unesco">
     <div class="logo">
       <a href="/"
-        ><img src="img/icons/logo_new.jpg" id="logo-image"
+        ><img src="{{ asset('img/icons/logo_new.jpg') }}" id="logo-image"
       /></a>
     </div>
-    <img src="img/icons/menu.svg" class="menu-icon" alt="menu" />
+    <img src="{{ asset('img/icons/menu.svg') }}" class="menu-icon" alt="menu" />
 
     <div class="navbar-links">
       <div class="dropdown show">
@@ -179,7 +179,7 @@
         </div>
       </div>
       <div class="search">
-        <img src="img/search-icon.png" />
+        <img src="{{ asset('img/search-icon.png') }}" />
       </div>
     </div>
   </div>

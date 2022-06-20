@@ -19,7 +19,7 @@ class ArticleFactory extends Factory
         return [
             'title' => $this->faker->word(),
             'content' => $this->faker->text(),
-            'url' => $this->faker->text(),
+            'url' => $this->faker->uuid(),
             'author_full_name' => $this->faker->name()
         ];
     }
