@@ -40,7 +40,7 @@ Route::get('/', function () {
 
 
 /* admin board methods */
-$adminBoardRoutes = ['/articles' => ArticleController::class, '/path-to-file' => PathToFileController::class, '/users' => UserController::class];
+$adminBoardRoutes = ['articles' => ArticleController::class, 'path-to-file' => PathToFileController::class, 'users' => UserController::class];
 
 
 foreach (array_keys($adminBoardRoutes) as $route) {
@@ -48,7 +48,7 @@ foreach (array_keys($adminBoardRoutes) as $route) {
     Route::middleware(['auth', 'admin'])->group(function () use ($route, $adminBoardRoutes) {
         Route::get($route, [$adminBoardRoutes[$route], 'getAll']);
         Route::post($route, [$adminBoardRoutes[$route], 'create']);
-        Route::put($route . '/{id}', [$adminBoardRoutes[$route], 'update']);
+        Route::put($route . '/{id}', [$adminBoardRoutes[$route], 'update'])->name($route . 'update');
         Route::get($route . '/{id}', [$adminBoardRoutes[$route], 'getOneById']);
         Route::delete($route . '/{id}', [$adminBoardRoutes[$route], 'delete']);
     });
@@ -62,6 +62,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin-users', ['uses' => UserController::class . '@getAllUsersAdmin']);
     Route::get('/admin-create-user', ['uses' => UserController::class . '@getUserCreationForm']);
     Route::get('/admin-map', ['uses' => ArticleController::class . '@getAdminMapView']);
+    Route::get('/admin-update-user/{id}', ['uses' => UserController::class . '@getUserUpdateForm']);
 });
 Route::get('/chat', function () {
     return view('chat');

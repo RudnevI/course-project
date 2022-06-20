@@ -35,7 +35,7 @@
 <div id="main-container">
     @include('subviews.admin-side-menu')
     <div id="main-admin-container">
-        <form action="/articles" method="POST" class="form-control" enctype="multipart/form-data">
+        <form action="/articles/{{$article->id}}" method="POST" class="form-control" enctype="multipart/form-data">
             @method('PUT')
             <div>
             <label for="title" class="form-label" >Заголовок</label>

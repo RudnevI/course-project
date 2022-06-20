@@ -87,7 +87,7 @@
                 </form>
             </td>
             <td>
-                <form action="/admin-edit-user/{{ $user->id }}" method="get">
+                <form action="/admin-update-user/{{ $user->id }}" method="get">
 
                     <button class="btn btn-primary" title="Редактирование"><img src="icons/pencil-square.svg" ></button></td>
                     </form>

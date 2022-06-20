@@ -24,4 +24,9 @@ class UserController extends CrudController
         parent::createParent($request);
         return $this->getAllUsersAdmin();
     }
+
+    public function getUserUpdateForm($id)
+    {
+        return view('admin-update-user', ['user' => User::where('id', '=', $id)->first()]);
+    }
 }
