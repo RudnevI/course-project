@@ -65,7 +65,7 @@
         <tr>
             <td>{{$article->title}}</td>
             <td>{{$article->author_full_name}}</td>
-            <td>{{$article->url}}</td>
+            <td><a href="/article/{{$article->url}}">{{$article->url}}</a></td>
             <td>
                 <form action="/articles/{{ $article->id }}" method="post">
                     @method('DELETE')
@@ -89,7 +89,7 @@
                 </form>
             </td>
             <td>
-                <form action="/admin-edit-article/{{ $article->id }}" method="get">
+                <form action="/admin-update-article/{{ $article->id }}" method="get">
 
                     <button class="btn btn-primary" title="Редактирование"><img src="icons/pencil-square.svg" ></button></td>
                     </form>
